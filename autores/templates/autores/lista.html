@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autores</title>
+</head>
+<body>
+    <h1>Lista de Autores</h1>
+    {% for autor in autores%}
+    <li style="list-style: none;"> 
+        <div>
+            <b>Nombre:</b> <a href="{{autor.id}}" >{{autor.nombre}}</a> 
+        </div> 
+        <div>
+            <b>Nacionalidad:</b> {{autor.nacionalidad}}
+        </div>
+        <br>
+    </li>
+    {% endfor%}
+
+    <h2>Agregar Autor:</h2>
+    <form action="/autores/" method="post">
+        {% csrf_token%}
+        <input type="text" name="nombre" placeholder="Nombre">
+        <input type="text" name="nacionalidad" placeholder="Nacionalidad">
+        <input type="date" name="fecha_nacimiento">
+        <button type="submit">Agregar</button>
+    </form>
+</body>
+</html>

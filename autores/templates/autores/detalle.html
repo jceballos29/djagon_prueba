@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{autor.nombre}}</title>
+</head>
+<body>
+    <h1>{{autor.nombre}}</h1>
+    <div>
+        <b>Nacionalidad: </b> {{autor.nacionalidad}}
+    </div>
+    <div>
+        <b>Fecha de nacimiento: </b> {{autor.fecha_nacimeinto}}
+    </div>
+    <div>
+        <h2>Libros</h2>
+        <ul>
+            {% for libro in libros %}
+                <li>{{libro}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <br>
+    <a href="/autores/">Regresar</a>
+</body>
+</html>
