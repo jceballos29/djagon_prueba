@@ -4,14 +4,12 @@ from autores.serializers import AutorSerializer
 from libros.models import Libro
 
 
-
-
 class LibroSerializer(ModelSerializer):
     # autores = AutorSerializer(many=True, read_only=True)
 
     class Meta:
         model = Libro
-        fields = ['id','nombre'] 
+        fields = '__all__'
 
 
 class CrearLibrosSerializer(ModelSerializer):
