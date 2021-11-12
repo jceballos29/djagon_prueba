@@ -1,5 +1,6 @@
 from copy import copy
 
+from django.core.mail import send_mail
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
@@ -88,6 +89,18 @@ class LibrosViewSet(ModelViewSet):
         libro = Libro.objects.get(id=pk)
         libro.publicado = True
         libro.save()
+        send_mail(
+            subject="Nueva Publicación",
+            message=f'Felicitaciones. Tu libro {libro.nombre} se ha publicado',
+            from_email='info@iblioteca.com',
+            recipient_list=['autores@bilioteca.co'],
+            html_message=f'''
+            <body>
+                <h1>FELICITACINES</h1>
+                <p>Tu libri {libro.nombre} se ha publicado</p>
+            </body>
+            '''
+        )
         return Response(status=status.HTTP_200_OK)
 
     @action(methods=['GET'], detail=False)
